@@ -1,10 +1,10 @@
 #include <DHT.h>
 
 #define DHTPIN 17       // DHT 資料接腳為 GPIO17
-#define DHTTYPE DHT11   // 或 DHT22，根據你使用的感測器型號設定
+#define DHTTYPE DHT11   
 DHT dht(DHTPIN, DHTTYPE);
 
-#define RELAY_PIN 16    // Relay 接在 GPIO16
+#define RELAY_PIN 16    // Relay 在 GPIO16
 
 void setup() {
   Serial.begin(9600);
