@@ -20,10 +20,10 @@
 - 杜邦線、電源線、麵包板
 
 ## 硬體接法
-[pics/circuit.png]
+![接線圖](pics/circuit.png)
 
 ## 控制邏輯
-[pics/program.png]
+![控制邏輯](pics/program.png)
 
 
 ## Telegram 互動功能
