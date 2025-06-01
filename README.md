@@ -1,4 +1,3 @@
-# Electronic-and-Electric-Circuits
 # Arduino 溫溼度自動控制霧化系統
 
 ## 研究目的
