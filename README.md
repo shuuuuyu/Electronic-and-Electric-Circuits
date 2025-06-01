@@ -20,6 +20,7 @@
 
 ## 硬體接法
 ![接線圖](pics/circuit.png)
+![接線圖](pics/hardware_connection.jpg)
 
 ## 控制邏輯
 ![控制邏輯](pics/program.png)
