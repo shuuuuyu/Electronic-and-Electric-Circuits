@@ -1,7 +1,7 @@
 /*
-18~27度>60%
+溫18~27度，溼>60%
 要測試的話20、21的帳密要改，30、31現在是我的
-如果超出是一溫溼度傳telegram包括噴水
+如果超出溫溼度傳telegram包括噴水
 */
 #include "DHT.h"
 #define dhtPin 16      //讀取DHT11 Data
@@ -17,9 +17,9 @@
 #include <ArduinoJson.h>
 
 int relay = 17;//繼電器17腳
-const char* ssid = "";
-const char* password = "";
-String welcome = " ";
+const char* ssid = "Redmi Note 11S";
+const char* password = "**********";
+String welcome = " ";                    
 float h = 0.0;
 float t = 0.0;
 unsigned long lastAlertTime = 0;   // 上一次發送訊息的時間
@@ -27,8 +27,8 @@ unsigned long alertCooldown = 60000; // 冷卻時間（以毫秒計，這是 60 
 String currentChatId = "";
 DHT dht(dhtPin, dhtType); // Initialize DHT sensor
 
-#define CHAT_ID ""// Initialize Telegram BOT
-#define BOTtoken ""  // your Bot Token (Get from Botfather)
+#define CHAT_ID "7661979220"// Initialize Telegram BOT
+#define BOTtoken "7965740720:AAHbP3xZQ_fzRbYmf_zOI5Qphi0Ex1Eyj6o"  // your Bot Token (Get from Botfather)
 #ifdef ESP8266
   X509List cert(TELEGRAM_CERTIFICATE_ROOT);
 #endif
@@ -61,11 +61,11 @@ void handleNewMessages(int numNewMessages) {
     if(text == "/start"){
       welcome = "歡迎" + bot.messages[i].from_name + "!\n";
       welcome += "我會幫您管理好您植物的溫溼度，並將訊息傳給您\n";
-      welcome += "如果隨時想知道溫溼度可以輸入「溫溼度」";
+      welcome += "如果隨時想知道溫溼度可以輸入「/readings」";
       bot.sendMessage(chat_id, welcome, "");
     }
 
-    if (text == "溫溼度") {
+    if (text == "/readings") {
       String message = "溫度: " + String(t) + " ºC \n";
       message += "濕度: " + String (h) + " % \n";
       bot.sendMessage(chat_id, message, "");
@@ -78,7 +78,7 @@ void setup() {
   Serial.begin(115200);//設定鮑率115200
   dht.begin();//啟動DHT  // DHT11-1b
   pinMode(relay, OUTPUT);
-  digitalWrite(relay, LOW);
+  digitalWrite(relay, HIGH);
 
   #ifdef ESP8266
   configTime(0, 0, "pool.ntp.org");      // get UTC time via NTP
@@ -123,9 +123,9 @@ void loop() {
     if (currentChatId != "") {
       bot.sendMessage(currentChatId, water, "");
     }
-    digitalWrite(relay, HIGH);
-    delay(500);
     digitalWrite(relay, LOW);
+    delay(1000); 
+    digitalWrite(relay, HIGH);
     delay(2000);
     lastAlertTime = millis(); // 更新上次發送時間
   }
