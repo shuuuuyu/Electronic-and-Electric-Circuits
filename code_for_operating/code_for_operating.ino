@@ -27,8 +27,8 @@ unsigned long alertCooldown = 60000; // 冷卻時間（以毫秒計，這是 60 
 String currentChatId = "";
 DHT dht(dhtPin, dhtType); // Initialize DHT sensor
 
-#define CHAT_ID "7661979220"// Initialize Telegram BOT
-#define BOTtoken "7965740720:AAHbP3xZQ_fzRbYmf_zOI5Qphi0Ex1Eyj6o"  // your Bot Token (Get from Botfather)
+#define CHAT_ID "**********"// Initialize Telegram BOT
+#define BOTtoken "**********"  // your Bot Token (Get from Botfather)
 #ifdef ESP8266
   X509List cert(TELEGRAM_CERTIFICATE_ROOT);
 #endif
